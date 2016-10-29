@@ -1,6 +1,6 @@
 passwordgen
 ===========
-A generator for safe and random passwords defined by a user-defined pattern (or the default). The pattern allows for sequences of random digits, symbols, and characters, as well as whole words, with a multitude of options to customize the generated password.
+l
 
 Options
 -------
@@ -19,7 +19,7 @@ A full pattern is comprised of one or more signifier expressions, ~~interspersed
 Signifiers can appear alone, to represent one character (or one word) from it's respective pool of possibilities. Every signifier expression must contain at least one signifier, preceeded by a `%` character.  
 **Multiple signifiers**  
 If multiple signifiers are used for the same expression, they must be wrapped by curly-brackets along with their flags (but not their length specifier), for example: `%{'sig1''sig2''sigN''flags'}['length']`. When multiple signifiers are used, each character in the expression's sequence is picked randomly from the pool of all available characters defined by the union of the sets of characters each signifier represents (therefore a `c` signifier used in a multiple signifier expression is redundant, as `c` is defined as including all charaters from the other signifier pools, unless used with the `~` flag to include the chance of using the pool of all characters).  
-**Note:** The `W` signifier **cannot** be included in an expression with multiple signifiers unless the `~` flag is present (raises an error).
+**Note:** The `W` signifier **cannot** be included in an expression with multiple signifiers unless the `~` flag is present (raises an error).  
 | Character | Definition                                                                            |
 | :-------: | ------------------------------------------------------------------------------------- |
 | `d`       | Random digit(s)                                                                       |
@@ -28,7 +28,7 @@ If multiple signifiers are used for the same expression, they must be wrapped by
 | `W`       | Random word (from dictionary, defaults to lowercase)                                  |
 | `c`       | Random character (excluding whitespace; word characters are of random capitalization) |
 #### Flags
-Flags are ways to manipulate the default action of each signifier. Certain flags can only interact with certain signifiers. If a flag is present but no signifiers that it can interact with are present, then it produces no effect.
+Flags are ways to manipulate the default action of each signifier. Certain flags can only interact with certain signifiers. If a flag is present but no signifiers that it can interact with are present, then it produces no effect.  
 | Character   | Relevant Signifiers | Definition |
 | :---------: | :-----------------: | ---------- |
 | `~`         | (any)               | When used in an expresion with multiple signifiers, one signifier from the given set is randomly chosen (without bias) to represent the sole signifier of the entire expression |
@@ -39,7 +39,7 @@ Flags are ways to manipulate the default action of each signifier. Certain flags
 #### Length Specifier
 The length specifier represents the length of the character sequence the signifier expression will produce. A length specifier can represent an explicit number, an inclusive range of numbers, or it can be absent. The length specifier, if present, is always surrounded by square brackets. The explicit specifier must satisfy `n > 0` where `n` is the explicit length given, and the range specifier must satisfy `n >= 0` and `N > 0` and `N >= n` where `n` is the lower bound of the range and `N` is the upper bound of the range. If any of these conditions are not satisfied, an error is raised and the program is terminated.  
 **With the `W` signifier**  
-The generator _does not_ pick the length randomly and then finds a random word of that length, but rather it groups up all words of acceptable length and picks randomly from that set, so whichever word-length is most frequent from that range, that would be the most probable result of the length of the word. Therefore, if part of the range exceeds the maximum word length, it is merely disregarded and the set to choose from is constructed from all available words with minimum length equal to the lower bound of the given range. If no words can be found satisfying the specified length (explicitly or via a range) a warning will be issued and the generator will choose a random word disregarding length.
+The generator _does not_ pick the length randomly and then finds a random word of that length, but rather it groups up all words of acceptable length and picks randomly from that set, so whichever word-length is most frequent from that range, that would be the most probable result of the length of the word. Therefore, if part of the range exceeds the maximum word length, it is merely disregarded and the set to choose from is constructed from all available words with minimum length equal to the lower bound of the given range. If no words can be found satisfying the specified length (explicitly or via a range) a warning will be issued and the generator will choose a random word disregarding length.  
 | Form     | Definition |
 | :------: | ---------- |
 | `[n]`    | The sequence will be explicitly of length `n` |
