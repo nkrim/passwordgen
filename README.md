@@ -47,9 +47,11 @@ The generator _does not_ pick the length randomly and then finds a random word o
 | `[n-N]`  | The length of the sequence will fall between the range of `n` and `N`, inclusively |
 | (absent) | The sequence will be either a single character, or, for the `W` signifier, will be a single word of random length |
 ### Signifier Expression Examples
-| Expression      | Example Result | Definition |
-| --------------- | -------------- | ---------- |
-| `%d`            | `6`            | A singule random digit |
+```bash
+$ passwordgen %d
+6            
+```
+A singule random digit
 | `%W`            | `password`     | A single random lowercase word |
 | `%w[4]`         | `dvzv`         | A sequence of random lowercase word characters |
 | `%W[5]`         | `cakes`        | A random lowercase word of length 5 |
