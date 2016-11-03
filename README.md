@@ -12,7 +12,7 @@ Options
 How to Use
 ----------
 #### Pattern Basics
-A full pattern is comprised of one or more signifier expressions, ~~interspersed with zero or more literal characters around them, if defined~~.  A signifier expression is composed of three parts, one or more **signifiers**, zero or more **flags**, and zero or one **length specifier**.  All signifier expressions follows this basic pattern `%'sig''flags'['length']` (more complex examples will be shown after the following definitions).  All signifiers and flags are singular characters, while the length specifier can be defined as `[n]` where `n > 0` or `[n-N]` where `n >= 0` and `N > 0` and `N >= n`.
+A full pattern is comprised of one or more signifier expressions.  A signifier expression is composed of three parts, one or more **signifiers**, zero or more **flags**, and zero or one **length specifier**.  All signifier expressions follows this basic pattern `%'sig''flags'['length']` (more complex examples will be shown after the following definitions).  All signifiers and flags are singular characters, while the length specifier can be defined as `[n]` where `n > 0` or `[n-N]` where `n >= 0` and `N > 0` and `N >= n`.
 #### Signifiers
 Signifiers can appear alone, to represent one character (or one word) from it's respective pool of possibilities. Every signifier expression must contain at least one signifier, preceeded by a `%` character.  
 **Multiple signifiers**  
