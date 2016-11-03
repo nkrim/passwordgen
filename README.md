@@ -1,6 +1,5 @@
 passwordgen
 ===========
-l
 
 Options
 -------
@@ -8,7 +7,6 @@ Options
 | :-------------------: | -------- | ---------- |
 | `-h`, `--help`        | none     | Display help menu |
 | `-i`, `--interactive` | none     | Launches in interactive mode, where passwords of the given pattern are continuously printed after each input, and if a valid pattern is given as input at any time, then the new pattern will be used going forward (enter `q` to exit) |
-| ~~`-l`, `--length`~~  | integer  | Sets total max length of the generated password. When this is set, if the pattern will never produce a sequence greater than length there is no effect, if the pattern can produce a sequence greater than length, but can also produce a sequence less than or equal to length then the pattern is fully satisfied within exactly the length (if possible), otherwise if the pattern will always exceed the length, the pattern is processed left-to-right while minimizing all ranges and when the end would be exceeded by the next expression the remaining space is filled with this expression (if this last expression uses the `W` signifier, then a random word is chosen to exactly fill the rest of the space). |
 | `-w`, `--worddict`    | file     | Sets the `words.txt` file that iss used as the dictionary for the generator when generating whole words. The parser goes line by line, using non-word characters to separate each word (this excludes hyphens and apostrophes, which are removed prior to parsing and the two sides of the word are merged) and a new, formatted `words.txt` file will be created (the previous version will be copied to words.txt.old) | 
 
 How to Use
