@@ -49,72 +49,88 @@ The generator _does not_ pick the length randomly and then finds a random word o
 | (absent) | The sequence will be either a single character, or, for the `W` signifier, will be a single word of random length |
 ### Signifier Expression Examples
 * A single random digit
-    $ passwordgen %d
-    6            
+
+ ```bash
+$ passwordgen %d
+6
+```
 * A single random lowercase word
-```bash
+
+ ```bash
 $ passwordgen %W
 password
 ```
 * A sequence of random lowercase word characters
-```bash
+
+ ```bash
 $ passwordgen %w[4]
 dvzv
 ```
 * A random lowercase word of length 5
-```bash
+
+ ```bash
 $ passwordgen %W[5]
 cakes
 ```
 * A sequence of random symbols with a length between 2 and 6
-  ```bash
-  $ passwordgen %s[2-6]
-  @$$#
-  ```
+
+ ```bash
+$ passwordgen %s[2-6]
+@$$#
+```
 * A sequence of a singular random digit, repeated between 4 and 6 times
-  ```bash
-  $ passwordgen %d=[4-6]
-  22222
-  ```
+
+ ```bash
+$ passwordgen %d=[4-6]
+22222
+```
 * A random uppercase word
-  ```bash
-  $ passwordgen %W+
-  GENERATOR
-  ```
+
+ ```bash
+$ passwordgen %W+
+GENERATOR
+```
 * A sequence of a singular random lowercase or uppercase character, repeated 3 times
-  ```bash
-  $ passwordgen %w=^+[3]
-  fff
-  ```
+ 
+ ```bash
+$ passwordgen %w=^+[3]
+fff
+```
 * A random word with a length between 2 and 4, with one uppercase letter (the `=` flag has no effect)
-  ```bash
-  $ passwordgen %W=^[2-4]
-  gRip
-  ```
+
+ ```bash
+$ passwordgen %W=^[2-4]
+gRip
+```
 * A random sequence of characters of length 8, with random capitalization
-  ```bash
-  $ passwordgen %c+^[8]
-  0es#V4uB
-  ```
+
+ ```bash
+$ passwordgen %c+^[8]
+0es#V4uB
+```
 * A random sequence of digits and symbols of length 4
-  ```bash
-  $ passwordgen %{ds}[4]
-  1##8
-  ```
+
+ ```bash
+$ passwordgen %{ds}[4]
+1##8
+```
 * A random sequence of length 5 consisting entirely of either of word characters or digits
-  ```bash
-  $ passwordgen %{wd~}[5]
-  82535
-  ```
+
+ ```bash
+$ passwordgen %{wd~}[5]
+82535
+```
 * A sequence of a singular random lowercase or uppercase word character or symbol, repeated 7 times
-  ```bash
-  $ passwordgen %{ws=^+}[7]
-  GGGGGGG
-  ```
+
+ ```bash
+$ passwordgen %{ws=^+}[7]
+GGGGGGG
+```
 * Same as above, except the chance between choosing a word character and a symbol is now equal because of the `~` flag, where previously the chance was weighted by the number of word characters vs the number of symbols
-  ```bash
-  $ passwordgen %{ws=^+~}[7]
-  $$$$$$$
-  ```
+
+ ```bash
+$ passwordgen %{ws=^+~}[7]
+$$$$$$$
+```
 
 
