@@ -8,7 +8,7 @@ from os import path
 # Conditional imports
 # -------------------
 try:
-	from markdown import markdown
+	from markdown2 import markdown
 except ImportError:
 	print('Please install the markdown package with `pip install markdown` to convert README.md to html for pypi description')
 	sys.exit(1)
@@ -19,6 +19,9 @@ except ImportError:
 def readFile(file):
 	with open(file) as f:
 		return f.read()
+
+def markdownFile(file, **kwargs):
+	return markdown(readFile(file), **kwargs)
 
 # Arguments
 # ------------
@@ -43,7 +46,7 @@ INSTALL_REQUIRES 	= [	'pyperclip>=1.5.27' ]
 # -----------
 NAME 				= 'passwordgen'
 DESCRIPTION 		= 'A generator for safe and random passwords defined by a user-defined pattern'
-LONG_DESCRIPTION 	= markdown(readFile(path.join(path.dirname(path.abspath(__file__)), 'README.md')))
+LONG_DESCRIPTION 	= markdownFile(path.join(path.dirname(path.abspath(__file__)), 'README.md'), extras=['tables','fenced-code-blocks'])
 AUTHOR 				= 'Noah Krim'
 AUTHOR_EMAIL 		= 'nkrim62@gmail.com'
 LICENSE 			= 'MIT License'
