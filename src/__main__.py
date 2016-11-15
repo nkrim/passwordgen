@@ -4,9 +4,9 @@ import pyperclip
 import sys
 from os import path
 
-from pattern import Pattern
-from worddict import WordDictionary
-from utils import *
+from .pattern import Pattern
+from .worddict import WordDictionary
+from .utils import *
 
 # Argument Defaults
 # =================
@@ -19,6 +19,8 @@ def main():
 	args = parser().parse_args()
 
 	# Word Dictionary ops
+	if args.revert:
+		WordDictionary.revert(WORDS_FILE)
 	worddict = None
 	if args.worddict:
 		print('Generating new words file from file: %r' % args.worddict)
@@ -103,13 +105,14 @@ def parser():
 								+'The parser goes line by line, using non-word characters to separate each word (this excludes hyphens and apostrophes, '
 								+'which are removed prior to parsing and the two sides of the word are merged) and a new, formatted `words.txt` '
 								+'file will be created (the previous version will be copied to words.txt.old)')
+	parser.add_argument(	'-R', '--revert',
+							action='store_true',
+							help='Reverts the worddict file at `words.txt` with the backup file, if there is one. '
+							+'This is performed before a new `words.txt` file is generated if the `-w` command is used with this')
 	return parser	
 
 def howto():
-	with open(path.join(path.dirname(path.dirname(path.abspath(__file__))), 'README.md'), 'r') as f:
-		for _ in range(13):
-			f.readline()
-		return f.read()
+	return 'Go to `https://github.com/nkrim/passwordgen` to see the README for the how-to documentation\n'
 
 if __name__ == '__main__':
 	main()

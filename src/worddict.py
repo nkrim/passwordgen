@@ -1,8 +1,9 @@
 import os
 import re
 from shutil import copyfileobj
+from tempfile import TemporaryFile, mkstemp
 
-from utils import *
+from .utils import *
 
 class WordDictionary:
 	class LengthSetMap:
@@ -91,9 +92,47 @@ class WordDictionary:
 			printerr('No formatted words file could be found at %r, skipping backup' % words_file)
 		except:
 			printerr('Could not backup words file from %r to %r' % (words_file, words_file+'.old'))
+		else:
+			return True
+		return False
 
 	@staticmethod
-	def setWordsFile(words_file, file_path):
+	def revert(words_file):
+		# Revert `words.txt.old` to `words.txt`
+		_, temp_file = mkstemp()
+		old_file = words_file+'.old'
+		try: 
+			with open(old_file, 'r') as old:
+				with open(temp_file, 'w') as temp:
+					copyfileobj(old, temp)
+		except IOError:
+			printerr('No backup file found at %r' % old_file)
+		except:
+			printerr('Could not load backup file %r' % old_file)
+		else:
+			if WordDictionary.backup(words_file):
+				try:
+					with open(temp_file, 'r') as temp:
+						with open(words_file, 'w') as f:
+							copyfileobj(temp, f)
+				except IOError:
+					printerr('No words file found at %r' % words_file)
+				except:
+					printerr('Could not revert backup to %r, attempting to restore overwritten backup' % words_file)
+					try: 
+						with open(temp_file, 'r') as temp:
+							with open(old_file, 'w') as old:
+								copyfileobj(temp, old)
+					except:
+						printerr('Could not restore the overwritten backup. Backup is lost.')
+				else:
+					os.remove(temp_file)
+					return True
+		os.remove(temp_file)
+		return False
+
+	@staticmethod
+	def setWordsFile(words_file, file_path, backup=True):
 		# Read input file
 		try:
 			wordmap = WordDictionary.parse(file_path)
@@ -101,7 +140,8 @@ class WordDictionary:
 			printerr('Could not find file %r' % file_path)
 			return None
 		# Backup words file
-		WordDictionary.backup(words_file)
+		if backup:
+			WordDictionary.backup(words_file)
 		# Write new words file
 		try: 
 			with open(words_file, 'w') as f:

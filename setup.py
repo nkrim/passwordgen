@@ -16,7 +16,7 @@ CLASSIFIERS = []
 
 # Dynamic info
 # ------------
-VERSION 			= '0.1'
+VERSION 			= '0.1.2'
 CLASSIFIERS 		+= [
 						'Development Status :: 3 - Alpha',
 					]
@@ -26,6 +26,7 @@ CLASSIFIERS 		+= [
 PACKAGES			= [	'passwordgen'	]
 PACKAGE_DIR 		= {	'passwordgen': 'src'	}
 PACKAGE_DATA 		= {	'passwordgen': ['words/words.txt', 'words/defaults/*.txt']	}
+DATA_FILES			= [ ('', ['README.md','LICENSE']), ]
 INSTALL_REQUIRES 	= [	'pyperclip>=1.5.27' ]
 
 # Static info
@@ -38,7 +39,7 @@ AUTHOR_EMAIL 		= 'nkrim62@gmail.com'
 LICENSE 			= 'MIT License'
 URL 				= 'https://github.com/nkrim/passwordgen'
 KEYWORDS 			= 'passwordgen password generator safe random pattern'
-ENTRY_POINTS		= { 'console_scripts': [ 'passwordgen = passwordgen.__main__' ] }
+ENTRY_POINTS		= { 'console_scripts': [ 'passwordgen = passwordgen.__main__:main' ] }
 CLASSIFIERS 		+= [
 						'Environment :: Console',
 						'Intended Audience :: End Users/Desktop',
@@ -70,6 +71,7 @@ setup(
 	packages=PACKAGES,
 	package_dir=PACKAGE_DIR,
 	package_data=PACKAGE_DATA,
+	data_files=DATA_FILES,
 	install_requires=INSTALL_REQUIRES,
 	classifiers=CLASSIFIERS,
 	include_package_data=INC_PKG_DATA,

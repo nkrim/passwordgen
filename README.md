@@ -2,6 +2,12 @@ passwordgen
 ===========
 A generator for safe and random passwords defined by a user-defined pattern. The pattern allows for sequences of random digits, symbols, and characters, as well as whole words, with a multitude of options to customize the generated password.
 
+Installation
+------------
+```bash
+$ pip install passwordgen
+```
+
 Options
 -------
 | Flag                  | Argument | Definition |
@@ -10,6 +16,7 @@ Options
 | `-c`, `--copy`        | none     | Whenever a password is succesfully generated (in either singlue-use mode or interactive mode), the string will be copied to your clipboard (may require external libraries, depending on platform) |
 | `-i`, `--interactive` | none     | Launches in interactive mode, where passwords of the given pattern are continuously printed after each input, and if a valid pattern is given as input at any time, then the new pattern will be used going forward (enter `q` to exit) |
 | `-w`, `--worddict`    | file     | Sets the `words.txt` file that iss used as the dictionary for the generator when generating whole words. The parser goes line by line, using non-word characters to separate each word (this excludes hyphens and apostrophes, which are removed prior to parsing and the two sides of the word are merged) and a new, formatted `words.txt` file will be created (the previous version will be copied to words.txt.old) | 
+| `-R`, `--revert`      | none     | Reverts the worddict file at `words.txt` with the backup file, if there is one. This is performed before a new `words.txt` file is generated if the `-w` command is used with this. |
 
 How to Use
 ----------
@@ -133,5 +140,3 @@ GGGGGGG
 $ passwordgen %{ws=^+~}[7]
 $$$$$$$
 ```
-
-
