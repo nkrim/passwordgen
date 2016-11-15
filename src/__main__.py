@@ -37,7 +37,7 @@ def main():
 		pattern = Pattern(args.pattern, worddict)
 	except ValueError as e:
 		printerr('Error when compiling pattern with `%s`: %s' % (args.pattern, e))
-		return 1
+		sys.exit(1)
 
 	# Generate password(s)
 	if args.interactive:
@@ -50,7 +50,7 @@ def main():
 				out = pattern.generate()
 			except ValueError as e:
 				printerr('Error when generating password: %s' % e)
-				return 1
+				sys.exit(1)
 			if args.copy:
 				pyperclip.copy(out)
 				print('  Copying to clipboard')
@@ -80,6 +80,7 @@ def main():
 			pyperclip.copy(out)
 			print('  Copying to clipboard')
 		print(out)
+	sys.exit(0)
 		
 
 def parser():
