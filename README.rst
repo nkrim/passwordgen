@@ -94,6 +94,7 @@ The generator *does not* pick the length randomly and then finds a random word o
 Signifier Expression Examples
 -----------------------------
 * A single random digit
+  
   .. code-block:: bash
 
       $ passwordgen %d
