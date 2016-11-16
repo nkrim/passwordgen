@@ -78,21 +78,21 @@ Length Specifiers With the ``W`` Signifier
 The generator *does not* pick the length randomly and then finds a random word of that length, but rather it groups up all words of acceptable length and picks randomly from that set, so whichever word-length is most frequent from that range, that would be the most probable result of the length of the word. Therefore, if part of the range exceeds the maximum word length, it is merely disregarded and the set to choose from is constructed from all available words with minimum length equal to the lower bound of the given range. If no words can be found satisfying the specified length (explicitly or via a range) a warning will be issued and the generator will choose a random word disregarding length.
 
 .. tabularcolumns:: |c|l|
-+---------------+-------------------------------------------------------------------------------------------------------------------+
-| Form          | Definition                                                                                                        |
-+===============+===================================================================================================================+
-| :bash:`[n]`   | The sequence will be explicitly of length `n`                                                                     |
-+---------------+-------------------------------------------------------------------------------------------------------------------+
-| :bash:`[n-N]` | The length of the sequence will fall between the range of `n` and `N`, inclusively                                |
-+---------------+-------------------------------------------------------------------------------------------------------------------+
-| (absent)      | The sequence will be either a single character, or, for the `W` signifier, will be a single word of random length |+---------------+-------------------------------------------------------------------------------------------------------------------+
++-----------+-------------------------------------------------------------------------------------------------------------------+
+| Form      | Definition                                                                                                        |
++===========+===================================================================================================================+
+| ``[n]``   | The sequence will be explicitly of length `n`                                                                     |
++-----------+-------------------------------------------------------------------------------------------------------------------+
+| ``[n-N]`` | The length of the sequence will fall between the range of `n` and `N`, inclusively                                |
++-----------+-------------------------------------------------------------------------------------------------------------------+
+| (absent)  | The sequence will be either a single character, or, for the `W` signifier, will be a single word of random length |+-----------+-------------------------------------------------------------------------------------------------------------------+
 
 Signifier Expression Examples
 -----------------------------
 * A single random digit
-  .. code-block:: bash
-      $ passwordgen %d
-	  6
+.. code-block:: bash
+  	$ passwordgen %d
+  	6
 
 * A single random lowercase word
 
