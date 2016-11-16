@@ -96,8 +96,8 @@ Signifier Expression Examples
 * A single random digit
   .. code-block:: bash
 
-    $ passwordgen %d
-    6
+      $ passwordgen %d
+      6
 
 * A single random lowercase word
 
