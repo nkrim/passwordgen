@@ -4,7 +4,7 @@ A generator for safe and random passwords defined by a user-defined pattern. The
 
 Installation
 ============
-.. code-bock:: bash
+::
 	$ pip install passwordgen
 
 Options
