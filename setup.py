@@ -1,18 +1,6 @@
-from __future__ import print_function
-
 import setuptools
-import sys
 from distutils.core import setup
 from os import path
-
-# Conditional imports
-# -------------------
-try:
-	from markdown2 import markdown
-except ImportError:
-	print('Please install the markdown package with `pip install markdown` to convert README.md to html for pypi description')
-	sys.exit(1)
-
 
 # Helper functions
 # ----------------
@@ -20,16 +8,13 @@ def readFile(file):
 	with open(file) as f:
 		return f.read()
 
-def markdownFile(file, **kwargs):
-	return markdown(readFile(file), **kwargs)
-
 # Arguments
 # ------------
 CLASSIFIERS = []
 
 # Dynamic info
 # ------------
-VERSION 			= '0.1.3'
+VERSION 			= '0.1.4'
 CLASSIFIERS 		+= [
 						'Development Status :: 3 - Alpha',
 					]
@@ -46,7 +31,7 @@ INSTALL_REQUIRES 	= [	'pyperclip>=1.5.27' ]
 # -----------
 NAME 				= 'passwordgen'
 DESCRIPTION 		= 'A generator for safe and random passwords defined by a user-defined pattern'
-LONG_DESCRIPTION 	= markdownFile(path.join(path.dirname(path.abspath(__file__)), 'README.md'), extras=['tables','fenced-code-blocks'])
+LONG_DESCRIPTION 	= readFile(path.join(path.dirname(path.abspath(__file__)), 'README.rst'))
 AUTHOR 				= 'Noah Krim'
 AUTHOR_EMAIL 		= 'nkrim62@gmail.com'
 LICENSE 			= 'MIT License'
