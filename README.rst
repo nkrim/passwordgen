@@ -1,3 +1,4 @@
+###########
 passwordgen
 ###########
 A generator for safe and random passwords defined by a user-defined pattern. The pattern allows for sequences of random digits, symbols, and characters, as well as whole words, with a multitude of options to customize the generated password.
@@ -87,7 +88,7 @@ The generator *does not* pick the length randomly and then finds a random word o
 +-----------+---------------------------------------------------------------------------------------------------------------------+
 
 Signifier Expression Examples
------------------------------
+#############################
 * A single random digit
   
   .. code-block:: bash
