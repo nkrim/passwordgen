@@ -14,7 +14,7 @@ CLASSIFIERS = []
 
 # Dynamic info
 # ------------
-VERSION 			= '0.1.4'
+VERSION 			= '0.1.5'
 CLASSIFIERS 		+= [
 						'Development Status :: 3 - Alpha',
 					]
@@ -24,7 +24,7 @@ CLASSIFIERS 		+= [
 PACKAGES			= [	'passwordgen'	]
 PACKAGE_DIR 		= {	'passwordgen': 'src'	}
 PACKAGE_DATA 		= {	'passwordgen': ['words/words.txt', 'words/defaults/*.txt']	}
-DATA_FILES			= [ ('', ['README.md','LICENSE']), ]
+DATA_FILES			= [ ('', ['README.rst','LICENSE']), ]
 INSTALL_REQUIRES 	= [	'pyperclip>=1.5.27' ]
 
 # Static info

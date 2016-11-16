@@ -4,7 +4,7 @@ A generator for safe and random passwords defined by a user-defined pattern. The
 
 Installation
 ============
-.. code-block:: bash
+.. code-block:: console
 
   $ pip install passwordgen
 
@@ -27,7 +27,7 @@ Signifiers
 Signifiers can appear alone, to represent one character (or one word) from it's respective pool of possibilities. Every signifier expression must contain at least one signifier, preceeded by a ``%`` character.
 
 Multiple Signifiers
-^^^^^^^^^^^^^^^^^^^
+-------------------
 If multiple signifiers are used for the same expression, they must be wrapped by curly-brackets along with their flags (but not their length specifier), for example: ``%{'sig1''sig2''sigN''flags'}['length']``. When multiple signifiers are used, each character in the expression's sequence is picked randomly from the pool of all available characters defined by the union of the sets of characters each signifier represents (therefore a ``c`` signifier used in a multiple signifier expression is redundant, as ``c`` is defined as including all charaters from the other signifier pools, unless used with the ``~`` flag to include the chance of using the pool of all characters).  
 
 **Note:** The ``W`` signifier **cannot** be included in an expression with multiple signifiers unless the ``~`` flag is present (raises an error).
@@ -90,98 +90,98 @@ Signifier Expression Examples
 #############################
 * A single random digit
   
-  .. code-block:: bash
+  .. code-block:: console
 
       $ passwordgen %d
       6
 
 * A single random lowercase word
 
-  .. code-block:: bash
+  .. code-block:: console
 	
 	  $ passwordgen %W
 	  password
 
 * A sequence of random lowercase word characters
 
-  .. code-block:: bash
+  .. code-block:: console
 
 	  $ passwordgen %w[4]
 	  dvzv
 
 * A random lowercase word of length 5
 
-  .. code-block:: bash
+  .. code-block:: console
 	
 	  $ passwordgen %W[5]
 	  cakes
 
 * A sequence of random symbols with a length between 2 and 6
 
-  .. code-block:: bash
+  .. code-block:: console
 	
 	  $ passwordgen %s[2-6]
 	  @$$#
 
 * A sequence of a singular random digit, repeated between 4 and 6 times
 
-  .. code-block:: bash
+  .. code-block:: console
 
 	  $ passwordgen %d=[4-6]
 	  22222
 
 * A random uppercase word
 
-  .. code-block:: bash
+  .. code-block:: console
 
 	  $ passwordgen %W+
 	  GENERATOR
 
 * A sequence of a singular random lowercase or uppercase character, repeated 3 times
 
-  .. code-block:: bash
+  .. code-block:: console
 
 	  $ passwordgen %w=^+[3]
 	  fff
 
 * A random word with a length between 2 and 4, with one uppercase letter (the `=` flag has no effect)
 
-  .. code-block:: bash
+  .. code-block:: console
 
 	  $ passwordgen %W=^[2-4]
 	  gRip
 
 * A random sequence of characters of length 8, with random capitalization
 
-  .. code-block:: bash
+  .. code-block:: console
 	
 	  $ passwordgen %c+^[8]
 	  0es#V4uB
 
 * A random sequence of digits and symbols of length 4
 
-  .. code-block:: bash
+  .. code-block:: console
 
 	  $ passwordgen %{ds}[4]
 	  1##8
 
 * A random sequence of length 5 consisting entirely of either of word characters or digits
 
-  .. code-block:: bash
+  .. code-block:: console
 
 	  $ passwordgen %{wd~}[5]
 	  82535
 
 * A sequence of a singular random lowercase or uppercase word character or symbol, repeated 7 times
 
-  .. code-block:: bash
+  .. code-block:: console
 
 	  $ passwordgen %{ws=^+}[7]
 	  GGGGGGG
 
 * Same as above, except the chance between choosing a word character and a symbol is now equal because of the `~` flag, where previously the chance was weighted by the number of word characters vs the number of symbols
 
-  .. code-block:: bash
+  .. code-block:: console
 
 	  $ passwordgen %{ws=^+~}[7]
 	  $$$$$$$
