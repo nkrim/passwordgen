@@ -5,7 +5,7 @@ A generator for safe and random passwords defined by a user-defined pattern. The
 Installation
 ============
 ::
-	$ pip install passwordgen
+  $ pip install passwordgen
 
 Options
 =======
