@@ -33,6 +33,7 @@ If multiple signifiers are used for the same expression, they must be wrapped by
 **Note:** The ``W`` signifier **cannot** be included in an expression with multiple signifiers unless the ``~`` flag is present (raises an error).
 
 .. tabularcolumns:: |c|l|
+
 +-----------+---------------------------------------------------------------------------------------+
 | Character | Definition                                                                            |
 +===========+=======================================================================================+
@@ -52,6 +53,7 @@ Flags
 Flags are ways to manipulate the default action of each signifier. Certain flags can only interact with certain signifiers. If a flag is present but no signifiers that it can interact with are present, then it produces no effect.
 
 .. tabularcolumns:: |c|c|l|
+
 +-----------------+---------------------+----------------------------------------------------------------------------------------------------+
 | Character       | Relevant Signifiers | Definition                                                                                         |
 +=================+=====================+====================================================================================================+
@@ -79,6 +81,7 @@ Length Specifiers With the ``W`` Signifier
 The generator *does not* pick the length randomly and then finds a random word of that length, but rather it groups up all words of acceptable length and picks randomly from that set, so whichever word-length is most frequent from that range, that would be the most probable result of the length of the word. Therefore, if part of the range exceeds the maximum word length, it is merely disregarded and the set to choose from is constructed from all available words with minimum length equal to the lower bound of the given range. If no words can be found satisfying the specified length (explicitly or via a range) a warning will be issued and the generator will choose a random word disregarding length.
 
 .. tabularcolumns:: |c|l|
+
 +-----------+-------------------------------------------------------------------------------------------------------------------+
 | Form      | Definition                                                                                                        |
 +===========+===================================================================================================================+
@@ -91,9 +94,10 @@ The generator *does not* pick the length randomly and then finds a random word o
 Signifier Expression Examples
 -----------------------------
 * A single random digit
-.. code-block:: bash
-  	$ passwordgen %d
-  	6
+  .. code-block:: bash
+ 
+      $ passwordgen %d
+  	  6
 
 * A single random lowercase word
 
