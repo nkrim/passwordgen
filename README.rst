@@ -83,7 +83,8 @@ The generator *does not* pick the length randomly and then finds a random word o
 +-----------+---------------------------------------------------------------------------------------------------------------------+
 | ``[n-N]`` | The length of the sequence will fall between the range of ``n`` and ``N``, inclusively                              |
 +-----------+---------------------------------------------------------------------------------------------------------------------+
-| (absent)  | The sequence will be either a single character, or, for the ``W`` signifier, will be a single word of random length |+-----------+---------------------------------------------------------------------------------------------------------------------+
+| (absent)  | The sequence will be either a single character, or, for the ``W`` signifier, will be a single word of random length |
++-----------+---------------------------------------------------------------------------------------------------------------------+
 
 Signifier Expression Examples
 -----------------------------
