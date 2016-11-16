@@ -110,6 +110,7 @@ Signifier Expression Examples
 * A sequence of random lowercase word characters
 
   .. code-block:: bash
+  
 	  $ passwordgen %w[4]
 	  dvzv
 
