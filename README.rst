@@ -1,4 +1,3 @@
-###########
 passwordgen
 ###########
 A generator for safe and random passwords defined by a user-defined pattern. The pattern allows for sequences of random digits, symbols, and characters, as well as whole words, with a multitude of options to customize the generated password.
