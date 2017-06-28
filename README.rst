@@ -10,7 +10,9 @@ Installation
   
 Usage
 =====
-``passwordgen [-h] [-c] [-i] [-w FILE | -l LANGUAGE] [-R] [pattern]``
+.. code-block:: console
+
+  $ passwordgen [-h] [-c] [-i] [-w FILE | -l LANGUAGE] [-R] [pattern]
 
 Options
 =======
@@ -201,7 +203,7 @@ You can contribute your language's dictionary by following these steps:
 
 1. Fork this project's github repository (https://github.com/nkrim/passwordgen)
 2. Find or create a file (with any formatting) with all (or as many as makes practical sense) of words from the language you wish to add (ensure that all characters in the words are basic alphabetic characters with no accents, aka 'ç' should be changed to 'c' and 'é' to 'é', though hyphens and apostrophes are removed prior to parsing by the program so those can be left in)
-3. Pre-format the file so it can be quickly loaded in at the user's request. If you have passwordgen installed you can do this by running ``python -c "from passwordgen.worddict import WordDictionary; print(WordDictionary.parse('<path_to_your_source_file>'))" > <path_to_your_output_file>`` with the appropriate subsititions, or if you do not have passwordgen installed, you can do the same command from the root directory of this project by replacing ``passwordgen`` with ``src``
+3. Pre-format the file so it can be quickly loaded in at the user's request. If you have passwordgen installed you can do this by running ``python -c "from passwordgen.worddict import WordDictionary; print(WordDictionary.parse('PATH_TO_SOURCE'))" > PATH_TO_OUTPUT`` with the appropriate subsititions, or if you do not have passwordgen installed, you can do the same command from the root directory of this project by replacing ``passwordgen`` with ``src``
 4. Move the formatted dictionary file into the directory ``src/words/defaults`` within this project, and ensure that the file's name is the ``<language_name>.txt`` where ``<language_name>`` is *lowercase* and is the name of the language within its own language (i.e. "deutsch" instead of "german", or "francais" intead of "french")
 5. Push your new language file(s) to your fork, and make a pull requst so that it can be reviewed and hopefully added to the project
 6. Thank you for contributing n_n
