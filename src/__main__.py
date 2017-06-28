@@ -4,7 +4,6 @@ import readline
 import pyperclip
 import sys
 from os import path
-from shutil import copyfileobj
 
 from .pattern import Pattern
 from .worddict import WordDictionary
@@ -70,14 +69,14 @@ def _main():
 				if not worddict:
 					printerr('Loading from fallback failed.')
 			if not worddict:
-				printerr('Could not generate new words file, can continue as long as pattern does not use the `W` signifier')
+				printerr('- Could not generate new words file, can continue as long as pattern does not use the `W` signifier')
 
 	# Set pattern as default, if necessary
 	if args.pattern is None:
 		if worddict:
 			args.pattern = DEFAULT_PATTERN 
 		else:
-			printerr('Using an augmented default pattern to accomadate the lack of a words file (%%W signifiers are changed to %%w)')
+			printerr('Using an augmented default pattern to accomadate for the lack of a words file (%W signifiers are changed to %w)')
 			args.pattern = DEFAULT_PATTERN_NO_WORDS
 	# Throw error for empty-string pattern
 	elif args.pattern == '':
