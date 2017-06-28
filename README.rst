@@ -7,6 +7,10 @@ Installation
 .. code-block:: console
 
   $ pip install passwordgen
+  
+Usage
+=====
+``passwordgen [-h] [-c] [-i] [-w FILE | -l LANGUAGE] [-R] [pattern]``
 
 Options
 =======
@@ -14,7 +18,7 @@ Options
 -c, --copy  Whenever a password is succesfully generated (in either singlue-use mode or interactive mode), the string will be copied to your clipboard (may require external libraries, depending on platform) 
 -i, --interactive  Launches in interactive mode, where passwords of the given pattern are continuously printed after each input, and if a valid pattern is given as input at any time, then the new pattern will be used going forward (enter ``q`` to exit)
 -w file, --worddict=file  Sets the ``words.txt`` file that is used as the dictionary for the generator when generating whole words. The parser goes line by line, using non-word characters to separate each word (this excludes hyphens and apostrophes, which are removed prior to parsing and the two sides of the word are merged) and a new, formatted ``words.txt`` file will be created (the previous version will be copied to ``words.txt.old``)
--l file, --language=file  Attempts to use a pre-made words file (made from the dictionary of the specified language) and replaces the current words.txt file using that language's words file, if it exists (if there is no default file for your language, please consider making your own file for your language and forking this project to include your language's dictionary; go to `https://github.com/nkrim/passwordgen` for more info)
+-l language, --language=language  Attempts to use a pre-made words file (made from the dictionary of the specified language) and replaces the current words.txt file using that language's words file, if it exists (if there is no default file for your language, please consider making your own file for your language and forking this project to include your language's dictionary; go to `https://github.com/nkrim/passwordgen` for more info)
 -R, --revert  Reverts the worddict file at ``words.txt`` with the backup file at ``words.txt.old``, if there is one. This is performed before a new ``words.txt`` file is generated if the ``-w`` command is used with this
 
 How to Use
