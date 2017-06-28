@@ -163,8 +163,8 @@ def parser():
 								+'file will be created (the previous version will be copied to words.txt.old)')
 	worddict_group.add_argument(	'-l', '--language',
 							type=str,
-							help='Attempts to use a pre-made default dictionary file for the specified language, if it exists, and replaces the current '
-								+'words.txt file using that language\'s dictionary, if it exists (if there is no default file for your language, please '
+							help='Attempts to use a pre-made words file (made from the dictionary of the specified language) and replaces the current '
+								+'words.txt file using that language\'s words file, if it exists (if there is no default file for your language, please '
 								+'consider making your own file for your language and forking this project to include your language\'s dictionary; '
 								+'go to `https://github.com/nkrim/passwordgen` for more info)')
 	parser.add_argument(	'-R', '--revert',
