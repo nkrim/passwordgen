@@ -76,7 +76,7 @@ class Pattern:
 			# Decide whether to use WordGenerator
 			if 'W' in sigs:
 				if not self.worddict:
-					raise ValueError('Attempted to use the `W` signifier while no word dictionary is loaded, load a dictionary with the `-w` or `--worddict` command options')
+					raise ValueError('Attempted to use the `W` signifier while no word dictionary is loaded, load a dictionary with the `-w` or `-l` command options')
 				if self.word_any_length:
 					wordpool = self.worddict.getWordPool()
 				else:

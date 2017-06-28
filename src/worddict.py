@@ -23,13 +23,13 @@ class WordDictionary:
 			return len(self._words)
 
 		def __str__(self):
-			return '\n'.join(','.join(sorted(word_set)) for word_set in self._words[1:self.maxlength()+1])
+			return '\n'.join(','.join(sorted(word_set)) for word_set in self._words[1:])
 
 		def add(self, word, length=-1):
 			if length < 0:
 				length = len(word)
-			if length+1 > len(self._words):
-				self._words += [set()] * (length+1-len(self._words))
+			while length >= len(self._words):
+				self._words.append(set())
 			self._words[length].add(word)
 
 		def maxlength(self):
@@ -68,12 +68,13 @@ class WordDictionary:
 			with open(file_path, 'r') as f:
 				for line in f:
 					for w in line.split(','):
+						w = w.strip()
 						if w:
 							wordmap.add(w, length)
 					length += 1
 		else:
 			sub_re = re.compile(r'[\-\']')
-			split_re = re.compile(r'\W+')
+			split_re = re.compile(r'[^a-zA-Z]+')
 			with open(file_path, 'r') as f:
 				for line in f:
 					for w in split_re.split(sub_re.sub('', line)):
@@ -132,10 +133,10 @@ class WordDictionary:
 		return False
 
 	@staticmethod
-	def setWordsFile(words_file, file_path, backup=True):
+	def setWordsFile(words_file, file_path, backup=True, formatted=False):
 		# Read input file
 		try:
-			wordmap = WordDictionary.parse(file_path)
+			wordmap = WordDictionary.parse(file_path, formatted)
 		except FileNotFoundError:
 			printerr('Could not find file %r' % file_path)
 			return None

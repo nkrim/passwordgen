@@ -14,6 +14,7 @@ Options
 -c, --copy  Whenever a password is succesfully generated (in either singlue-use mode or interactive mode), the string will be copied to your clipboard (may require external libraries, depending on platform) 
 -i, --interactive  Launches in interactive mode, where passwords of the given pattern are continuously printed after each input, and if a valid pattern is given as input at any time, then the new pattern will be used going forward (enter ``q`` to exit)
 -w file, --worddict=file  Sets the ``words.txt`` file that is used as the dictionary for the generator when generating whole words. The parser goes line by line, using non-word characters to separate each word (this excludes hyphens and apostrophes, which are removed prior to parsing and the two sides of the word are merged) and a new, formatted ``words.txt`` file will be created (the previous version will be copied to ``words.txt.old``)
+-l file, --language=file  Attempts to use a pre-made default dictionary file for the specified language, if it exists, and replaces the current words.txt file using that language's dictionary, if it exists (if there is no default file for your language, please consider making your own file for your language and forking this project to include your language's dictionary; go to `https://github.com/nkrim/passwordgen` for more info)
 -R, --revert  Reverts the worddict file at ``words.txt`` with the backup file at ``words.txt.old``, if there is one. This is performed before a new ``words.txt`` file is generated if the ``-w`` command is used with this
 
 How to Use
@@ -87,7 +88,7 @@ The generator *does not* pick the length randomly and then finds a random word o
 +-----------+---------------------------------------------------------------------------------------------------------------------+
 
 Signifier Expression Examples
-#############################
+=============================
 * A single random digit
   
   .. code-block:: console
@@ -185,3 +186,15 @@ Signifier Expression Examples
 
 	  $ passwordgen %{ws=^+~}[7]
 	  $$$$$$$
+
+Contributing
+============
+Adding languages' dictionaries
+------------------------------
+If you could not find a particular language in the list of default language dictionaries (which can be used as presets word files for generating random words by using the ``-l`` flag with a valid language name) you can contribue to this project by adding your favorite languages! Please note though that, in it's current form, passwordgen only supports basic alpha-numeric characters, so whichever language you wish to add should be able to be properly represented by this alphabet. You can contribute your language's dictionary by following these steps:
+1. Fork this project's github repository (https://github.com/nkrim/passwordgen)
+2. Find or create a file (with any formatting) with all (or as many as makes practical sense) of words from the language you wish to add (ensure that all characters in the words are basic alphabetic characters with no accents, aka 'ç' should be changed to 'c' and 'é' to 'é', though hyphens and apostrophes are removed prior to parsing by the program so those can be left in)
+3. Pre-format the file so it can be quickly loaded in at the user's request. If you have passwordgen installed you can do this by running ``python -c "from passwordgen.worddict import WordDictionary; print(WordDictionary.parse('<path_to_your_source_file>'))" > <path_to_your_output_file>`` with the appropriate subsititions, or if you do not have passwordgen installed, you can do the same command from the root directory of this project by replacing ``passwordgen`` with ``src``
+4. Move the formatted dictionary file into the directory ``src/words/defaults`` within this project, and ensure that the file's name is the ``<language_name>.txt`` where ``<language_name>`` is *lowercase* and is the name of the language within its own language (i.e. "deutsch" instead of "german", or "francais" intead of "french")
+5. Push your new language file(s) to your fork, and make a pull requst so that it can be reviewed and hopefully added to the project
+Thank you for contributing n_n
