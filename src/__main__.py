@@ -139,7 +139,7 @@ def _main():
 		
 
 def parser():
-	parser = argparse.ArgumentParser(	description='Generate random passwords using a pattern ot specify the general format.',
+	parser = argparse.ArgumentParser(	description='Generate random passwords using a pattern ot specify the general format',
 										epilog=howto(),
 										formatter_class=argparse.RawDescriptionHelpFormatter)
 	parser.add_argument(	'pattern',
