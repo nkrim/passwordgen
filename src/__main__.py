@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 import argparse
 import re
 import readline
@@ -8,6 +10,10 @@ from os import path
 from .pattern import Pattern
 from .worddict import WordDictionary
 from .utils import *
+
+py3 = sys.version_info[0] >= 3
+if py3:
+	raw_input = input
 
 # Argument Defaults
 # =================
@@ -95,6 +101,7 @@ def _main():
 		return 1
 
 	# Generate password(s)
+	# Interactive mode
 	if args.interactive:
 		print('Entering interactive mode. Press enter to generate a new password. Enter a new pattern at any time to use instead, if valid.')
 		print('  Enter `q` to quit')
@@ -110,10 +117,12 @@ def _main():
 				pyperclip.copy(out)
 				print('  Copying to clipboard')
 			print(out)
-			if sys.version_info[0] < 3:
+			# Read interactive input (safe to KeyboardInterrupt w/ ctrl-C)
+			try:
 				instr = raw_input('> ').strip()
-			else:
-				instr = input('> ').strip()
+			except (KeyboardInterrupt, EOFError) :
+				print()
+				return 0
 			if instr:
 				if instr == 'q':
 					quit = True
@@ -128,6 +137,7 @@ def _main():
 						print('  Enter `q` to quit')
 						print('  Generating using pattern: `%s`' % pattern)
 
+	# Normal (one-off) mode
 	else:
 		print('  Generating using pattern: `%s`' % pattern)
 		out = pattern.generate()

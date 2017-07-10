@@ -3,7 +3,7 @@ import re
 from shutil import copyfileobj
 from tempfile import TemporaryFile, mkstemp
 
-from .utils import *
+from .utils import printerr
 
 class WordDictionary:
 	class LengthSetMap:
